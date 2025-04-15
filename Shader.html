@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home | My Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Shader.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+
+<html>  
+    <head>  
+        <title>Resume</title>
+        <body style="background-color: darkslategrey;">   
+            <h1>Water Shader</h1>
+            <p>The properties for a water shader in this topic are depth fade, foam control, and refraction</p>
+            <dl>Properties</dl>
+                <dt>Depth fade</dt>
+                    <dd>Depth fade is a technique used in water, fog, and transparent shaders to make the edges where a transparent object (like water) meets another surface (like terrain) blend smoothly instead of sharply  </dd>
+                    <dd>It works by comparing</dd>
+                    <ul>
+                        <li>The distance from the camera to the object behind the water (scene depth).</li>
+                        <li>The distance from the camera to the water surface itself.</li>
+                    </ul>
+                    <img src = "IMG/Depth_Fade_Shader.png" height="400">
+                    <dd>What this graph does is it smoothly lerps between two colors _ShallowColor and _DeepColorbased on the _DepthDistance between the water surface and the geometry underneath, using scene depth.   </dd>
+                <dt>Foam control</dt>
+                    <dd> You're already blending between shallow and deep water colors using depth fade. Now let’s add foam near shallow areas (shoreline) for extra realism.
+                    We’ll create foam that appears only where the water is shallow.</dd>    
+                    <dd>We control the foam by:</dd>
+                        <ul>
+                            <li>_FoamColor</li>
+                            <li>_FoamThreshold</li>
+                            <li>_FoamIntensity</li>
+                        </ul>
+                        <img src = "IMG/Foam.png" height="400">
+                <dt>Refraction</dt>
+                <dd>Refraction creates the illusion of light bending through water. Think of how rocks look "shifted" or "distorted" under a lake’s surface. In Unity, we simulate refraction by distorting the background scene using a screen texture sampling, typically influenced by noise or normals.</dd>
+                <dd>What This Shader Graph Does</dd>
+                    <ul>
+                        <li>Animating a normal map.</li>
+                        <li>Using the normals to distort the screen UVs.</li>
+                        <li>Sampling the scene color with the distorted UVs.</li>
+                        <li>Outputting the final refracted color.</li>
+                    </ul>
+                    <img src = "IMG/Refraction.png" height="400">
+                <h3>And last we combine all the shader</h3>
+                    <img src = "IMG/Water.png" height="400">
+            </body>
+    </head>
+
+</html>
